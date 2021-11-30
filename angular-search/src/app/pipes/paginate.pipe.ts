@@ -1,0 +1,16 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { Product } from '../models/products.model';
+
+@Pipe({
+  name: 'paginate',
+  pure: true,
+})
+export class PaginatePipe implements PipeTransform {
+
+  perPage = 9;
+
+  transform(products: Product[], page: number): Product[] {
+    return products.slice(0, page * this.perPage);
+  }
+
+}

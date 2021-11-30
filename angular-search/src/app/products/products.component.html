@@ -1,0 +1,29 @@
+<div class="col-md-12 mb-4 input-group">
+  <input type="text" placeholder="Search" class="form-control me-3" (keyup)="search($event)">
+  <div class="input-group-append">
+    <select class="form-select" (change)="sort($event)">
+      <option>Select</option>
+      <option value="asc">Price Ascending</option>
+      <option value="desc">Price Descending</option>
+    </select>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <div class="col" *ngFor="let product of products">
+    <div class="card shadow-sm">
+      <img [src]="product.image">
+
+      <div class="card-body">
+        <p class="card-text">{{ product.title }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-muted">${{ product.price }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4" *ngIf="filter.page < lastPage">
+  <button class="btn btn-primary" (click)="loadMore()">Load More</button>
+</div>

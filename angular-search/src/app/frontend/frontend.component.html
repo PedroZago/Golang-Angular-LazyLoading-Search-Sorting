@@ -1,0 +1,2 @@
+<app-products [products]="products | search: filter.s | sort: filter.sort | paginate: filter.page"
+  (setFilters)="filter = $event" [filter]="filter" [lastPage]="lastPage(products | search: filter.s)"></app-products>
